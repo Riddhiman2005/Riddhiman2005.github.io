@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animationCanvas"></canvas>
+
+    <script>
+        // Define the particle class
+        class Particle {
+            constructor(x, y, size, color) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+                this.vx = Math.random() - 0.5; // Random velocity in x direction
+                this.vy = Math.random() - 0.5; // Random velocity in y direction
+                this.trail = []; // Trail positions
+                this.trailMaxLength = 50; // Maximum length of the trail
+            }
+
+            update(canvasWidth, canvasHeight, particles) {
+                // Update particle position based on velocity
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Reflect particle if it hits the canvas edges
+                if (this.x <= 0 || this.x >= canvasWidth) {
+                    this.vx *= -1;
+                }
+                if (this.y <= 0 || this.y >= canvasHeight) {
+                    this.vy *= -1;
+                }
+
+                // Check for collisions with other particles
+                for (let i = 0; i < particles.length; i++) {
+                    const otherParticle = particles[i];
+
+                    if (otherParticle !== this) {
+                        const dx = otherParticle.x - this.x;
+                        const dy = otherParticle.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < this.size + otherParticle.size) {
+                            // Collisions detected, change trajectory
+                            const angle = Math.atan2(dy, dx);
+                            const sin = Math.sin(angle);
+                            const cos = Math.cos(angle);
+
+                            // Calculate velocities
+                            const thisSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                            const otherSpeed = Math.sqrt(otherParticle.vx * otherParticle.vx + otherParticle.vy * otherParticle.vy);
+
+                            // Calculate rebound factors
+                            const reboundFactorThis = (this.size - otherParticle.size) / (this.size + otherParticle.size);
+                            const reboundFactorOther = (2 * this.size) / (this.size + otherParticle.size);
+
+                            // Calculate new velocities
+                            const vx1Final = reboundFactorThis * thisSpeed * cos + reboundFactorOther * otherSpeed * cos;
+                            const vy1Final = reboundFactorThis * thisSpeed * sin + reboundFactorOther * otherSpeed * sin;
+                            const vx2Final = reboundFactorOther * thisSpeed * cos + reboundFactorThis * otherSpeed * cos;
+                            const vy2Final = reboundFactorOther * thisSpeed * sin + reboundFactorThis * otherSpeed * sin;
+
+                            // Update velocities
+                            this.vx = vx1Final;
+                            this.vy = vy1Final;
+                            otherParticle.vx = vx2Final;
+                            otherParticle.vy = vy2Final;
+                        }
+                    }
+                }
+
+                // Update trail
+                this.trail.unshift({ x: this.x, y: this.y });
+                if (this.trail.length > this.trailMaxLength) {
+                    this.trail.pop();
+                }
+            }
+
+            draw(ctx) {
+                // Draw the trail
+                for (let i = 0; i < this.trail.length; i++) {
+                    const point = this.trail[i];
+                    const alpha = 1 - i / this.trail.length; // Fade out trail
+
+                    ctx.fillStyle = `rgba(${this.color}, ${alpha})`;
+                    ctx.fillRect(point.x - this.size / 2, point.y - this.size / 2, this.size, this.size);
+                }
+
+                // Draw the particle
+                ctx.fillStyle = `rgb(${this.color})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Animation function
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw particles
+            particles.forEach(particle => {
+                particle.update(canvas.width, canvas.height, particles);
+                particle.draw(ctx);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize the animation
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d');
+        const particles = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Create particles
+        for (let i = 0; i < 100; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const size = Math.random() * 10 + 5;
+            const color = `${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}`;
+            particles.push(new Particle(x, y, size, color));
+        }
+
+        // Start the animation loop
+        animate();
+    </script>
+</body>
+</html>
