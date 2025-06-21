@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ding Ding - CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; color: #1F2937; }
+        .font-jetbrains-mono { font-family: 'JetBrains Mono', monospace; }
+        .sticky-header { position: sticky; top: 0; z-index: 50; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid #E5E7EB; }
+        .nav-link { @apply px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors; }
+        .nav-link-active { @apply bg-[#00AFFF] text-white hover:bg-[#0095DD] hover:text-white; }
+        .section-title-main { @apply text-3xl font-bold mb-12 text-center relative text-gray-900; }
+        .section-title-main::after { content: ''; @apply block w-20 h-1 bg-[#00AFFF] mx-auto mt-3 rounded; }
+        .btn { @apply inline-block bg-[#00AFFF] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#0095DD] transition-colors text-base; } 
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'theme-primary-bg': '#F9FAFB', 'theme-card-bg': '#FFFFFF', 'theme-text-primary': '#1F2937', 'theme-text-secondary': '#4B5563', 'theme-accent': '#00AFFF', 'theme-accent-hover': '#0095DD', 'theme-secondary-accent': '#F5A623', 'theme-border': '#E5E7EB' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'], } } } }
+    </script>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="sticky-header">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gray-900">Ding Ding</a>
+                </div>
+                <div class="hidden sm:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="research.html" class="nav-link">Research</a>
+                        <a href="publications.html" class="nav-link">Publications</a>
+                        <a href="teaching.html" class="nav-link">Teaching</a>
+                        <a href="cv.html" class="nav-link nav-link-active">CV</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </div>
+                </div>
+                <div class="sm:hidden"> 
+                    <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="sm:hidden hidden bg-white border-b border-gray-200" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block nav-link">Home</a>
+                <a href="research.html" class="block nav-link">Research</a>
+                <a href="publications.html" class="block nav-link">Publications</a>
+                <a href="teaching.html" class="block nav-link">Teaching</a>
+                <a href="cv.html" class="block nav-link nav-link-active">CV</a>
+                <a href="contact.html" class="block nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <section id="cv-content">
+            <h1 class="section-title-main">Curriculum Vitae</h1>
+            <div class="max-w-3xl mx-auto text-center"> 
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                    For a detailed overview of my academic background, research experience, skills, and awards, please download my full Curriculum Vitae.
+                </p>
+                <a href="#" class="btn">Download CV (PDF)</a>
+                 <p class="mt-10 text-gray-600 text-left leading-relaxed">
+                    You can also find my profile on academic and professional networking sites:
+                </p>
+                <ul class="mt-4 space-y-3 text-left">
+                    <li>
+                        <a href="https://github.com/dingding-ust" target="_blank" rel="noopener noreferrer" class="text-[#00AFFF] hover:underline font-medium">
+                            GitHub: github.com/dingding-ust
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/ding-ding-244b32324/" target="_blank" rel="noopener noreferrer" class="text-[#00AFFF] hover:underline font-medium">
+                            LinkedIn: linkedin.com/in/ding-ding-244b32324
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-200 py-10 text-center mt-20">
+        <p class="text-sm text-gray-500"> 
+            &copy; <span id="currentYear"></span> Ding Ding. All rights reserved.
+        </p>
+        <p class="text-xs text-gray-400 mt-2">
+            Built with <a href="https://tailwindcss.com/" class="hover:text-[#00AFFF]">Tailwind CSS</a>.
+            Last updated: May 10, 2025.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+            menuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
