@@ -18,6 +18,16 @@
         .section-title-main::after { content: ''; @apply block w-20 h-1 bg-[#00AFFF] mx-auto mt-3 rounded; }
         .content-subheading { @apply text-xl font-semibold text-gray-800 mt-6 mb-3; } 
         .tag { @apply inline-block bg-[#00AFFF] text-white text-sm font-semibold mr-2 mb-2 px-3 py-1 rounded-full; } 
+
+        .topic-block { margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid #E5E7EB; }
+        .topic-title { font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
+        .topic-desc { font-size: 1.05rem; line-height: 1.75; color: #374151; margin-bottom: 1rem; }
+        .paper-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #00AFFF; margin-bottom: 0.35rem; }
+        .paper-card { border-left: 4px solid #00AFFF; background: #FFFFFF; padding: 0.75rem 1rem; border-radius: 0 0.5rem 0.5rem 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .paper-title { font-weight: 600; color: #111827; }
+        .paper-authors { font-size: 0.95rem; color: #4B5563; margin-top: 0.15rem; }
+        .paper-venue { font-size: 0.9rem; color: #6B7280; font-style: italic; margin-top: 0.1rem; }
+        .me { font-weight: 700; color: #111827; background-color: #FEF3C7; padding: 0 0.25rem; border-radius: 0.2rem; }
     </style>
     <script>
         tailwind.config = { theme: { extend: { colors: { 'theme-primary-bg': '#F9FAFB', 'theme-card-bg': '#FFFFFF', 'theme-text-primary': '#1F2937', 'theme-text-secondary': '#4B5563', 'theme-accent': '#00AFFF', 'theme-accent-hover': '#0095DD', 'theme-secondary-accent': '#F5A623', 'theme-border': '#E5E7EB' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'], } } } }
@@ -83,6 +93,57 @@
                         <span class="tag">Machine Learning-based Nonlinear Dynamics</span>
                         <!-- <span class="tag">Mathematical Biology</span>
                         <span class="tag">Single-Cell Genomics</span> -->
+                    </div>
+                </div>
+
+                <div class="topic-block">
+                    <h3 class="topic-title">Mathematical Oncology</h3>
+                    <p class="topic-desc">Mathematical oncology uses equations and computational models to study how cancers start, grow, spread and respond to treatment. Rather than treating a tumour as a static object, these models describe it as an evolving population of cells competing for space and resources, which lets us ask &ldquo;what if&rdquo; questions about therapy timing and resistance before they are tested in the clinic.</p>
+                    <div class="paper-label">Recent relevant paper</div>
+                    <div class="paper-card">
+                        <div class="paper-title">[Paper title 1]</div>
+                        <div class="paper-authors"><span class="me">Riddhiman Bhattacharya</span>, [Co-author A], [Co-author B]</div>
+                        <div class="paper-venue">[Journal / Preprint, Year]</div>
+                    </div>
+                </div>
+                <div class="topic-block">
+                    <h3 class="topic-title">Mathematical Pharmacology</h3>
+                    <p class="topic-desc">Mathematical pharmacology models how a drug moves through the body (pharmacokinetics) and what it does once it arrives (pharmacodynamics). I am interested in how drug dosing, combinations and cellular responses interact, and how these models can be used to design smarter, more effective treatment schedules.</p>
+                    <div class="paper-label">Recent relevant paper</div>
+                    <div class="paper-card">
+                        <div class="paper-title">[Paper title 2]</div>
+                        <div class="paper-authors"><span class="me">Riddhiman Bhattacharya</span>, [Co-author A], [Co-author B]</div>
+                        <div class="paper-venue">[Journal / Preprint, Year]</div>
+                    </div>
+                </div>
+                <div class="topic-block">
+                    <h3 class="topic-title">Deterministic &amp; Stochastic Modelling</h3>
+                    <p class="topic-desc">Deterministic models (such as ordinary differential equations) describe the average behaviour of a system, while stochastic models capture the randomness that dominates when molecule or cell numbers are small. Comparing the two shows when noise in gene expression or signalling can be ignored, and when it drives qualitatively different outcomes such as cell-to-cell variability.</p>
+                    <div class="paper-label">Recent relevant paper</div>
+                    <div class="paper-card">
+                        <div class="paper-title">[Paper title 3]</div>
+                        <div class="paper-authors"><span class="me">Riddhiman Bhattacharya</span>, [Co-author A], [Co-author B]</div>
+                        <div class="paper-venue">[Journal / Preprint, Year]</div>
+                    </div>
+                </div>
+                <div class="topic-block">
+                    <h3 class="topic-title">Non-Linear Dynamics</h3>
+                    <p class="topic-desc">Nonlinear dynamics studies systems where small changes can have disproportionately large effects, producing thresholds, oscillations, bistability and chaos. Many biological processes, from the cell cycle to circadian rhythms to gene regulation, behave this way, and tools like bifurcation analysis and stability theory help explain why.</p>
+                    <div class="paper-label">Recent relevant paper</div>
+                    <div class="paper-card">
+                        <div class="paper-title">[Paper title 4]</div>
+                        <div class="paper-authors"><span class="me">Riddhiman Bhattacharya</span>, [Co-author A], [Co-author B]</div>
+                        <div class="paper-venue">[Journal / Preprint, Year]</div>
+                    </div>
+                </div>
+                <div class="topic-block">
+                    <h3 class="topic-title">Machine Learning-based Nonlinear Dynamics</h3>
+                    <p class="topic-desc">This area combines machine learning with dynamical systems theory, for example learning governing equations directly from data, building surrogate models of expensive simulations, or using neural networks to forecast and classify complex dynamics. The aim is to uncover mechanisms in biological systems where the underlying equations are unknown or only partly known.</p>
+                    <div class="paper-label">Recent relevant paper</div>
+                    <div class="paper-card">
+                        <div class="paper-title">[Paper title 5]</div>
+                        <div class="paper-authors"><span class="me">Riddhiman Bhattacharya</span>, [Co-author A], [Co-author B]</div>
+                        <div class="paper-venue">[Journal / Preprint, Year]</div>
                     </div>
                 </div>
             </div>
